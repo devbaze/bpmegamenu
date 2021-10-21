@@ -1,0 +1,230 @@
+/* pa da pocnemo */
+.bpmenu-header{
+    box-shadow: 15px 0px 40px 0px rgb(0 0 0 / 10%);
+    transition: background 0.3s, border 0.3s, border-radius 0.3s, box-shadow 0.3s;
+    padding: 0px 15px 0px 15px;
+    z-index: 900;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    height: 80px;
+    transform: translateY(0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bpmenu-container{
+    width: 100%;
+    max-width: 1340px;
+    margin: 0 auto;
+    z-index: 1;
+}
+
+
+.bpmenu-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bpmenu-logo{
+    flex:0 0 200px;
+}
+
+.bpmenu-logo img{
+    max-width: 100%;
+}
+
+
+.bpmenu-menu{
+    flex-grow: 1;
+}
+
+.bpmenu-menu-list{
+    list-style: none;
+    margin:0;
+    padding:0;
+    display: flex;
+}
+
+.bpmenu-menu-list li a.bpmenu-menu-item{
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:15px;
+    position: relative;
+    color: var( --e-global-color-secondary );
+}
+
+.bpmenu-has-submenu{
+    position: relative;
+}
+
+.bpmenu-has-submenu:before{
+    content:'';
+    background-color: var( --e-global-color-primary );
+    height: 3px;
+    position: absolute;
+    bottom:0;
+    left:0;
+    width:0;
+    transition: all 200ms ease-in-out;
+}
+
+.bpmenu-has-submenu:hover{
+}
+
+.bpmenu-has-submenu:hover:before{
+    width: 100%;
+}
+
+.bpmenu-sub-menu{
+    transform: translateY(-50px);
+    transition: all 200ms ease-in-out;
+    position: fixed;
+    left: 0;
+    top: 80px;
+    width: 100%;
+    background-color: #fff;
+    opacity: 0;
+    visibility: hidden;
+    z-index: -1;
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 10%);
+}
+
+.bpmenu-has-submenu:hover a.bpmenu-menu-item{
+    color: var( --e-global-color-primary );
+}
+
+.bpmenu-has-submenu:hover .bpmenu-sub-menu{
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.bpmenu-burger{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    width: 60px;
+}
+.bpmenu-burger span{
+    display: block;
+    margin: 5px 0;
+    height: 3px;
+    border-radius: 3px;
+    background-color: var( --e-global-color-secondary );
+}
+
+@media (max-width: 767px) {
+    .bpmenu-menu{
+        display: none;
+    }
+    .bpmenu-row{
+        display: flex;
+        justify-content: space-between;
+    }
+    .bpmenu-burger{
+        display: block;
+    }   
+}
+
+.bpmenu-menu.mobile{
+    display: block;
+    position: absolute;
+    width: 80%;
+    height: 100vh;
+    right: 0;
+    top: 0;
+    z-index: 2000;
+    background-color: #fff;
+    overflow-y: scroll;
+    padding:15px;
+    box-shadow: -15px 0px 40px 0px rgb(0 0 0 / 10%);
+}
+
+.bpmenu-menu.mobile ul li a.bpmenu-menu-item{
+    height: auto;
+    padding: 10px 15px;
+    border-bottom: 1px solid #efefef;
+}
+
+.bpmenu-menu.mobile .bpmenu-sub-menu{
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    display: none;
+    visibility: visible;
+    opacity: 1;
+    box-shadow: none;
+    border:none;
+}
+
+.bpmenu-menu.mobile .bpmenu-has-submenu:hover .bpmenu-sub-menu{
+    display: block;
+}
+
+.bpmenu-menu.mobile .bpmenu-menu-list{
+    flex-direction: column;
+    justify-content: left;
+    margin-top: 40px;
+}
+.bpmenu-menu.mobile .bpmenu-menu-list a.bpmenu-menu-item{
+    justify-content: left;
+}
+
+.bpmenu-mobile-close{
+    position: absolute;
+    right: 32px;
+    top: 32px;
+    width: 32px;
+    height: 32px;
+    opacity: 0.3;
+    top: 15px;
+    right: 15px;
+    display: none;
+}
+
+.bpmenu-mobile-close:before, .bpmenu-mobile-close:after{
+    position: absolute;
+    left: 15px;
+    content: ' ';
+    height: 33px;
+    width: 2px;
+    background-color: var( --e-global-color-secondary );
+}
+
+.bpmenu-mobile-close:before {
+    transform: rotate(45deg);
+}
+.bpmenu-mobile-close:after {
+    transform: rotate(-45deg);
+}
+
+.bpmenu-menu.mobile .bpmenu-mobile-close{
+    display: block;
+}
+
+.bpmenu-backdrop{
+    display: none;
+    background-color: rgba(0,0,0,0.5);
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.bpmenu-mobile-backdrop body{
+    overflow: hidden;
+}
+
+.bpmenu-mobile-backdrop .bpmenu-backdrop{
+    display: block;
+}
